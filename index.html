@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Échale Ganas — The Ice Princess and the Candy Boy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ═══════════════════════════════════════════════════════
+       INDEX — Story Hub Styles
+       ═══════════════════════════════════════════════════════ */
+
+    /* Hub Hero — cinematic intro */
+    .hub-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background:
+        radial-gradient(ellipse at 30% 40%, rgba(212, 168, 67, 0.07) 0%, transparent 55%),
+        radial-gradient(ellipse at 70% 60%, rgba(163, 193, 212, 0.05) 0%, transparent 55%),
+        radial-gradient(ellipse at 50% 90%, rgba(139, 32, 53, 0.04) 0%, transparent 40%),
+        var(--bg-dark);
+      overflow: hidden;
+    }
+
+    .hub-hero__overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 3px,
+          rgba(212, 168, 67, 0.01) 3px,
+          rgba(212, 168, 67, 0.01) 6px
+        );
+      pointer-events: none;
+    }
+
+    .hub-hero__content {
+      position: relative;
+      z-index: 1;
+      padding: var(--space-xl) var(--space-md);
+      max-width: 700px;
+    }
+
+    .hub-hero__label {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.7rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--frost);
+      margin-bottom: var(--space-sm);
+    }
+
+    .hub-hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5.5vw, 4rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--text-primary);
+      margin-bottom: var(--space-sm);
+    }
+
+    .hub-hero__title em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .hub-hero__subtitle {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      color: var(--frost);
+      margin-bottom: var(--space-lg);
+    }
+
+    .hub-hero__divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-lg);
+    }
+
+    .hub-hero__divider::before,
+    .hub-hero__divider::after {
+      content: '';
+      width: 50px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+    }
+
+    .hub-hero__divider span {
+      color: var(--gold);
+      font-size: 0.85rem;
+    }
+
+    .hub-hero__tagline {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--gold);
+      margin-bottom: var(--space-md);
+    }
+
+    .hub-hero__desc {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      max-width: 560px;
+      margin: 0 auto var(--space-lg);
+    }
+
+    .hub-hero__flags {
+      font-size: 1.3rem;
+      letter-spacing: 0.4em;
+      margin-bottom: var(--space-lg);
+    }
+
+    .hub-hero__scroll {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      opacity: 0.35;
+      animation: pulse-fade 2.5s ease-in-out infinite;
+    }
+
+    .hub-hero__scroll span {
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+    }
+
+    .hub-hero__scroll-line {
+      width: 1px;
+      height: 22px;
+      background: linear-gradient(180deg, var(--gold-dim), transparent);
+    }
+
+    /* Synopsis strip */
+    .synopsis {
+      padding: var(--space-2xl) 0;
+      border-bottom: 1px solid var(--border-subtle);
+      text-align: center;
+    }
+
+    .synopsis__text {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.9;
+      max-width: 680px;
+      margin: 0 auto var(--space-md);
+    }
+
+    .synopsis__text strong {
+      color: var(--text-primary);
+    }
+
+    .synopsis__stats {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-xl);
+      margin-top: var(--space-xl);
+      flex-wrap: wrap;
+    }
+
+    .synopsis__stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.2rem;
+    }
+
+    .synopsis__stat-num {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .synopsis__stat-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* Act cards */
+    .acts {
+      padding: var(--space-2xl) 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .acts__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-md);
+      margin-top: var(--space-lg);
+    }
+
+    .act-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: var(--space-lg) var(--space-md);
+      text-align: center;
+      transition: all var(--duration) var(--ease-out);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .act-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      opacity: 0.6;
+    }
+
+    .act-card:hover {
+      transform: translateY(-3px);
+      background: var(--bg-card-hover);
+    }
+
+    .act-card--one::before   { background: var(--gold); }
+    .act-card--two::before   { background: var(--frost); }
+    .act-card--three::before { background: var(--amber); }
+    .act-card--four::before  { background: var(--crimson-light); }
+
+    .act-card--one:hover   { border-color: rgba(212, 168, 67, 0.3); }
+    .act-card--two:hover   { border-color: rgba(163, 193, 212, 0.3); }
+    .act-card--three:hover { border-color: rgba(200, 117, 51, 0.3); }
+    .act-card--four:hover  { border-color: rgba(139, 32, 53, 0.3); }
+
+    .act-card__number {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-xs);
+    }
+
+    .act-card--one .act-card__number   { color: var(--gold); }
+    .act-card--two .act-card__number   { color: var(--frost); }
+    .act-card--three .act-card__number { color: var(--amber); }
+    .act-card--four .act-card__number  { color: var(--crimson-light); }
+
+    .act-card__title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.3rem;
+    }
+
+    .act-card__subtitle {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: var(--space-sm);
+    }
+
+    .act-card__chapters {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* Chapter index */
+    .chapters-index {
+      padding: var(--space-2xl) 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .chapters-index__list {
+      list-style: none;
+      padding: 0;
+      margin-top: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+
+    .chapter-link {
+      display: grid;
+      grid-template-columns: 3.5rem 1fr auto;
+      align-items: center;
+      gap: var(--space-md);
+      padding: var(--space-sm) var(--space-md);
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--text-primary);
+      transition: all var(--duration) var(--ease-out);
+    }
+
+    .chapter-link:hover {
+      background: var(--bg-card-hover);
+      transform: translateX(4px);
+      border-color: var(--border-accent);
+      color: var(--text-primary);
+    }
+
+    .chapter-link--active:hover {
+      border-color: var(--gold);
+    }
+
+    .chapter-link--locked {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .chapter-link__num {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--border-accent);
+      text-align: center;
+    }
+
+    .chapter-link--active .chapter-link__num {
+      color: var(--gold);
+    }
+
+    .chapter-link__info {
+      min-width: 0;
+    }
+
+    .chapter-link__title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.15rem;
+    }
+
+    .chapter-link__teaser {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .chapter-link__act-tag {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+
+    .act-tag--one   { background: rgba(212, 168, 67, 0.12); color: var(--gold); }
+    .act-tag--two   { background: rgba(163, 193, 212, 0.12); color: var(--frost); }
+    .act-tag--three { background: rgba(200, 117, 51, 0.12); color: var(--amber); }
+    .act-tag--four  { background: rgba(139, 32, 53, 0.12); color: var(--crimson-light); }
+
+    .chapter-link__status {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .chapter-link--active .chapter-link__status {
+      color: var(--gold);
+    }
+
+    /* Game Plan link */
+    .game-plan-link {
+      padding: var(--space-2xl) 0;
+      text-align: center;
+    }
+
+    .game-plan-link__btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-sm);
+      padding: 0.8rem 2rem;
+      border: 1px solid var(--border-accent);
+      border-radius: 100px;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: all var(--duration) var(--ease-out);
+    }
+
+    .game-plan-link__btn:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(212, 168, 67, 0.05);
+    }
+
+    /* Hub footer */
+    .hub-footer {
+      padding: var(--space-xl) 0;
+      text-align: center;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .hub-footer__text {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      letter-spacing: 0.05em;
+    }
+
+    .hub-footer__text strong {
+      color: var(--text-secondary);
+      letter-spacing: 0.08em;
+    }
+
+    .hub-footer__flags {
+      margin-top: var(--space-sm);
+      font-size: 1.1rem;
+      letter-spacing: 0.4em;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .acts__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .chapter-link {
+        grid-template-columns: 2.5rem 1fr;
+        gap: var(--space-sm);
+      }
+
+      .chapter-link__act-tag {
+        display: none;
+      }
+
+      .chapter-link__teaser {
+        white-space: normal;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .acts__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .synopsis__stats {
+        gap: var(--space-lg);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!--  HERO                                                  -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <header class="hub-hero">
+    <div class="hub-hero__overlay"></div>
+    <div class="hub-hero__content">
+      <p class="hub-hero__label">A Roshidere Story</p>
+      <h1 class="hub-hero__title"><em>Échale Ganas</em></h1>
+      <p class="hub-hero__subtitle">The Ice Princess &amp; the Candy Boy</p>
+      <div class="hub-hero__divider">
+        <span>✦</span>
+      </div>
+      <p class="hub-hero__tagline">"Échale ganas, mijo."</p>
+      <p class="hub-hero__desc">
+        A boy from Mexico arrives at Japan's most elite academy carrying nothing but
+        Pulparindos, a golden chain, and a smile that doesn't know it's about to be tested.
+        This is his story — told in candy, silence, and the languages we hide behind.
+      </p>
+      <p class="hub-hero__flags">🇲🇽 🇷🇺 🇯🇵</p>
+    </div>
+    <div class="hub-hero__scroll" aria-hidden="true">
+      <span>scroll</span>
+      <div class="hub-hero__scroll-line"></div>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!--  SYNOPSIS                                              -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section class="synopsis" id="synopsis">
+    <div class="container">
+      <h2 class="section-title">Season 1</h2>
+      <p class="synopsis__text">
+        <strong>Jesús "Chuy" Hernández Torres</strong> lands in Tokyo with the echo of his
+        father's voice still warm in his ears. At Seirei Private Academy, he becomes the
+        "Candy Boy" — a tourist attraction wrapped in warmth that the institution doesn't
+        know how to process. But behind the smile, a mother is drowning in grief, a princess
+        is watching from behind walls of ice, and a girl with plans for her brother is sharpening
+        her knives.
+      </p>
+      <p class="synopsis__text">
+        Fourteen chapters. Four acts. One golden chain that never comes off.
+      </p>
+      <div class="synopsis__stats">
+        <div class="synopsis__stat">
+          <span class="synopsis__stat-num">4</span>
+          <span class="synopsis__stat-label">Acts</span>
+        </div>
+        <div class="synopsis__stat">
+          <span class="synopsis__stat-num">14</span>
+          <span class="synopsis__stat-label">Chapters</span>
+        </div>
+        <div class="synopsis__stat">
+          <span class="synopsis__stat-num">3</span>
+          <span class="synopsis__stat-label">Languages</span>
+        </div>
+        <div class="synopsis__stat">
+          <span class="synopsis__stat-num">∞</span>
+          <span class="synopsis__stat-label">Pulparindos</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!--  ACTS OVERVIEW                                         -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section class="acts" id="acts">
+    <div class="container">
+      <h2 class="section-title">The Four Acts</h2>
+      <div class="acts__grid">
+        <div class="act-card act-card--one">
+          <div class="act-card__number">Act I</div>
+          <h3 class="act-card__title">Arrival</h3>
+          <p class="act-card__subtitle">"Nosotros los Nobles"</p>
+          <p class="act-card__chapters">Chapters 1–3</p>
+        </div>
+        <div class="act-card act-card--two">
+          <div class="act-card__number">Act II</div>
+          <h3 class="act-card__title">Friendship</h3>
+          <p class="act-card__subtitle">"Échale Ganas, Mijo"</p>
+          <p class="act-card__chapters">Chapters 4–7</p>
+        </div>
+        <div class="act-card act-card--three">
+          <div class="act-card__number">Act III</div>
+          <h3 class="act-card__title">Ambition</h3>
+          <p class="act-card__subtitle">"Candy Boy"</p>
+          <p class="act-card__chapters">Chapters 8–11</p>
+        </div>
+        <div class="act-card act-card--four">
+          <div class="act-card__number">Act IV</div>
+          <h3 class="act-card__title">Breaking Point</h3>
+          <p class="act-card__subtitle">"¿Por Qué No Moriste Tú?"</p>
+          <p class="act-card__chapters">Chapters 12–14</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!--  CHAPTER INDEX                                         -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section class="chapters-index" id="chapters">
+    <div class="container">
+      <h2 class="section-title">Chapters</h2>
+      <ul class="chapters-index__list">
+
+        <!-- Ch 1 — ACTIVE -->
+        <li>
+          <a href="chapter-1.html" class="chapter-link chapter-link--active">
+            <span class="chapter-link__num">01</span>
+            <div class="chapter-link__info">
+              <div class="chapter-link__title">Sunday Night</div>
+              <div class="chapter-link__teaser">A plane, a lost boy, and the last easy night in Japan.</div>
+            </div>
+            <span class="chapter-link__act-tag act-tag--one">Act I</span>
+          </a>
+        </li>
+
+        <!-- Ch 2 — LOCKED -->
+        <li>
+          <div class="chapter-link chapter-link--locked">
+            <span class="chapter-link__num">02</span>
+            <div class="chapter-link__info">
+              <div class="chapter-link__title">Pulparindos</div>
+              <div class="chapter-link__teaser">First day. First candy. First walls.</div>
+            </div>
+            <span class="chapter-link__act-tag act-tag--one">Act I</span>
+          </div>
+        </li>
+
+        <!-- Ch 3 -->
+        <li>
+          <div class="chapter-link chapter-link--locked">
+            <span class="chapter-link__num">03</span>
+            <div class="chapter-link__info">
+              <div class="chapter-link__title">The Limousine</div>
+              <div class="chapter-link__teaser">A ride that changes the math overnight.</div>
+            </div>
+            <span class="chapter-link__act-tag act-tag--one">Act I</span>
+          </div>
+        </li>
+
+        <!-- Ch 4 -->
+        <li>
+          <div class="chapter-link chapter-link--locked">
+            <span class="chapter-link__num">04</span>
+            <div class="chapter-link__info">
+              <div class="chapter-link__title">The Bodyguard</div>
+              <div class="chapter-link__teaser">One look. One line. The exploiter vanishes.</div>
+            </div>
+            <span class="chapter-link__act-tag act-tag--two">Act II</span>
+          </div>
+        </li>
+
+        <!-- Ch 5 -->
+        <li>
+          <div class="chapter-link chapter-link--locked">
+            <span class="chapter-link__num">05</span>
+            <div class="chapter-link__info">
+              <div class="chapter-link__title">Esta Niña Habla Chistoso</div>
+              <div class="chapter-link__teaser">Two languages. Two confessions. Zero understanding.</div>
+            </div>
+            <span class="chapter-link__act-tag act-tag--two">Act II</span>
+          </div>
+        </li>
+
+        <!-- Ch 6 -->
+        <li>
+          <div class="chapter-link chapter-link--locked">
+            <span class="chapter-link__num">06</span>
+            <div class="chapter-link__info">
+              <div class="chapter-link__title">The Third Chair</div>
+              <div class="chapter-link__teaser">Three chairs. One kitchen. Antonio alive in the room.</div>
+            </div>
+            <span class="chapter-link__act-tag act-tag--two">Act II</span>
+          </div>
+        </li>
+
+        <!-- Ch 7 -->
+        <li>
+          <div class="chapter-link chapter-link--locked">
+            <span class="chapter-link__num">07</span>
+            <div class="chapter-link__info">
+              <div class="chapter-link__title">Empty Plates</div>
+              <div class="chapter-link__teaser">A foil-covered plate. Hours pass. She walks right by.</div>
+            </div>
+            <span class="chapter-link__act-tag act-tag--two">Act II</span>
+          </div>
+        </li>
+
+        <!-- Ch 8 -->
+        <li>
+          <div class="chapter-link chapter-link--locked">
+            <span class="chapter-link__num">08</span>
+            <div class="chapter-link__info">
+              <div class="chapter-link__title">Tourist Attraction</div>
+              <div class="chapter-link__teaser">The warmth is working. The question: fast enough?</div>
+            </div>
+            <span class="chapter-link__act-tag act-tag--three">Act III</span>
+          </div>
+        </li>
+
+        <!-- Ch 9 -->
+        <li>
+          <div class="chapter-link chapter-link--locked">
+            <span class="chapter-link__num">09</span>
+            <div class="chapter-link__info">
+              <div class="chapter-link__title">The Suou Eye</div>
+              <div class="chapter-link__teaser">Everything warm reframed as a threat assessment.</div>
+            </div>
+            <span class="chapter-link__act-tag act-tag--three">Act III</span>
+          </div>
+        </li>
+
+        <!-- Ch 10 -->
+        <li>
+          <div class="chapter-link chapter-link--locked">
+            <span class="chapter-link__num">10</span>
+            <div class="chapter-link__info">
+              <div class="chapter-link__title">The Election</div>
+              <div class="chapter-link__teaser">He doesn't want power. He wants to belong.</div>
+            </div>
+            <span class="chapter-link__act-tag act-tag--three">Act III</span>
+          </div>
+        </li>
+
+        <!-- Ch 11 -->
+        <li>
+          <div class="chapter-link chapter-link--locked">
+            <span class="chapter-link__num">11</span>
+            <div class="chapter-link__info">
+              <div class="chapter-link__title">Whispers</div>
+              <div class="chapter-link__teaser">Nowhere safe. Still smiling.</div>
+            </div>
+            <span class="chapter-link__act-tag act-tag--three">Act III</span>
+          </div>
+        </li>
+
+        <!-- Ch 12 -->
+        <li>
+          <div class="chapter-link chapter-link--locked">
+            <span class="chapter-link__num">12</span>
+            <div class="chapter-link__info">
+              <div class="chapter-link__title">The Slap</div>
+              <div class="chapter-link__teaser">The hand that once held him.</div>
+            </div>
+            <span class="chapter-link__act-tag act-tag--four">Act IV</span>
+          </div>
+        </li>
+
+        <!-- Ch 13 -->
+        <li>
+          <div class="chapter-link chapter-link--locked">
+            <span class="chapter-link__num">13</span>
+            <div class="chapter-link__info">
+              <div class="chapter-link__title">The Mark</div>
+              <div class="chapter-link__teaser">"Who did that?" Ice and fire.</div>
+            </div>
+            <span class="chapter-link__act-tag act-tag--four">Act IV</span>
+          </div>
+        </li>
+
+        <!-- Ch 14 -->
+        <li>
+          <div class="chapter-link chapter-link--locked">
+            <span class="chapter-link__num">14</span>
+            <div class="chapter-link__info">
+              <div class="chapter-link__title">The Antagonist</div>
+              <div class="chapter-link__teaser">One plate. Chain still on. I'm still here.</div>
+            </div>
+            <span class="chapter-link__act-tag act-tag--four">Act IV</span>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!--  GAME PLAN LINK                                        -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section class="game-plan-link">
+    <div class="container">
+      <a href="game-plan.html" class="game-plan-link__btn">
+        📋 View the Full Game Plan
+      </a>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!--  FOOTER                                                -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <footer class="hub-footer">
+    <div class="container">
+      <p class="hub-footer__text">
+        <strong>ÉCHALE GANAS — THE ICE PRINCESS AND THE CANDY BOY</strong><br />
+        A Roshidere Story · Season 1
+      </p>
+      <p class="hub-footer__flags">🇲🇽 🇷🇺 🇯🇵</p>
+    </div>
+  </footer>
+
+</body>
+</html>
