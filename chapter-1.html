@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 1: Sunday Night — Échale Ganas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       CHAPTER 1 — "SUNDAY NIGHT"
+       Unique Design: Night Sky / Indigo / Arrival
+       ═══════════════════════════════════════════════════════════ */
+
+    /* ─── Design Tokens ─────────────────────────────────────── */
+    :root {
+      /* Night Sky palette */
+      --ch1-sky:          #080c18;
+      --ch1-sky-mid:      #0e1428;
+      --ch1-sky-light:    #141c35;
+      --ch1-indigo:       #1a2744;
+      --ch1-navy:         #1e3055;
+
+      /* Warm accent — Chuy / golden thread */
+      --ch1-gold:         #d4a843;
+      --ch1-gold-light:   #f0d68a;
+      --ch1-gold-dim:     #8b7230;
+      --ch1-amber:        #c87533;
+
+      /* Cool accent — Tokyo / arrival */
+      --ch1-neon:         #6b8cce;
+      --ch1-neon-dim:     #3a5a8a;
+
+      /* Text */
+      --ch1-text:         #e0dcd4;
+      --ch1-text-soft:    #a8a29e;
+      --ch1-text-muted:   #6a645e;
+      --ch1-text-ghost:   #3e3a35;
+
+      /* Borders */
+      --ch1-border:       #1e2438;
+      --ch1-border-glow:  #2a3550;
+
+      /* Typography */
+      --font-display:  'Playfair Display', Georgia, 'Noto Serif JP', serif;
+      --font-body:     'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-jp:       'Noto Serif JP', serif;
+    }
+
+    /* ─── Reset ─────────────────────────────────────────────── */
+    *, *::before, *::after {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--ch1-sky);
+      color: var(--ch1-text);
+      line-height: 1.85;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: var(--ch1-gold);
+      color: var(--ch1-sky);
+    }
+
+    /* ─── Navigation Bar ────────────────────────────────────── */
+    .chapter-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.8rem 1.5rem;
+      background: rgba(8, 12, 24, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--ch1-border);
+    }
+
+    .chapter-nav__home {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ch1-text-soft);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .chapter-nav__home:hover {
+      color: var(--ch1-gold);
+    }
+
+    .chapter-nav__indicator {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--ch1-text-muted);
+      letter-spacing: 0.1em;
+    }
+
+    .chapter-nav__next {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--ch1-text-ghost);
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      cursor: default;
+    }
+
+    /* ─── Chapter Hero ──────────────────────────────────────── */
+    .ch-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background:
+        radial-gradient(ellipse at 40% 30%, rgba(26, 39, 68, 0.6) 0%, transparent 50%),
+        radial-gradient(ellipse at 65% 70%, rgba(107, 140, 206, 0.06) 0%, transparent 40%),
+        radial-gradient(ellipse at 20% 80%, rgba(212, 168, 67, 0.04) 0%, transparent 35%),
+        var(--ch1-sky);
+      overflow: hidden;
+    }
+
+    /* Stars effect */
+    .ch-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.4), transparent),
+        radial-gradient(1px 1px at 25% 35%, rgba(255,255,255,0.25), transparent),
+        radial-gradient(1.5px 1.5px at 45% 12%, rgba(255,255,255,0.5), transparent),
+        radial-gradient(1px 1px at 60% 45%, rgba(255,255,255,0.3), transparent),
+        radial-gradient(1px 1px at 75% 25%, rgba(255,255,255,0.35), transparent),
+        radial-gradient(1.5px 1.5px at 85% 55%, rgba(255,255,255,0.2), transparent),
+        radial-gradient(1px 1px at 15% 65%, rgba(255,255,255,0.3), transparent),
+        radial-gradient(1px 1px at 35% 80%, rgba(255,255,255,0.2), transparent),
+        radial-gradient(1.5px 1.5px at 55% 70%, rgba(255,255,255,0.15), transparent),
+        radial-gradient(1px 1px at 90% 10%, rgba(255,255,255,0.45), transparent),
+        radial-gradient(1px 1px at 5% 90%, rgba(255,255,255,0.2), transparent),
+        radial-gradient(1px 1px at 70% 85%, rgba(255,255,255,0.25), transparent);
+      pointer-events: none;
+      animation: twinkle 6s ease-in-out infinite alternate;
+    }
+
+    @keyframes twinkle {
+      0%   { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+
+    .ch-hero__content {
+      position: relative;
+      z-index: 1;
+      padding: 6rem 1.5rem 3rem;
+      max-width: 600px;
+    }
+
+    .ch-hero__act {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.65rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--ch1-gold);
+      background: rgba(212, 168, 67, 0.1);
+      display: inline-block;
+      padding: 0.35rem 1.2rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
+
+    .ch-hero__number {
+      font-family: var(--font-display);
+      font-size: clamp(5rem, 15vw, 10rem);
+      font-weight: 700;
+      line-height: 0.85;
+      color: rgba(212, 168, 67, 0.08);
+      margin-bottom: -0.5rem;
+      user-select: none;
+    }
+
+    .ch-hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--ch1-text);
+      margin-bottom: 1rem;
+    }
+
+    .ch-hero__epigraph {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--ch1-gold-dim);
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .ch-hero__locations {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .loc-tag {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      padding: 0.3rem 0.7rem;
+      border-radius: 6px;
+      background: rgba(107, 140, 206, 0.08);
+      border: 1px solid var(--ch1-border);
+      color: var(--ch1-neon);
+    }
+
+    .ch-hero__scroll {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      opacity: 0.3;
+      animation: pulse-down 2.5s ease-in-out infinite;
+    }
+
+    .ch-hero__scroll span {
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--ch1-text-muted);
+    }
+
+    .ch-hero__scroll-line {
+      width: 1px;
+      height: 25px;
+      background: linear-gradient(180deg, var(--ch1-neon-dim), transparent);
+    }
+
+    @keyframes pulse-down {
+      0%, 100% { opacity: 0.15; transform: translateX(-50%) translateY(0); }
+      50%      { opacity: 0.45; transform: translateX(-50%) translateY(4px); }
+    }
+
+    /* ─── Prose Container ───────────────────────────────────── */
+    .prose {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ─── Scene Sections ────────────────────────────────────── */
+    .scene {
+      padding: 4rem 0 3rem;
+      position: relative;
+    }
+
+    .scene + .scene {
+      border-top: 1px solid var(--ch1-border);
+    }
+
+    .scene__header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .scene__location {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--ch1-neon);
+      margin-bottom: 0.5rem;
+    }
+
+    .scene__time {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 0.85rem;
+      color: var(--ch1-text-muted);
+    }
+
+    /* ─── Prose Typography ──────────────────────────────────── */
+    .prose p {
+      font-size: 1.02rem;
+      color: var(--ch1-text);
+      line-height: 1.9;
+      margin-bottom: 1.4rem;
+      text-indent: 1.5em;
+    }
+
+    .prose p:first-of-type,
+    .prose .no-indent {
+      text-indent: 0;
+    }
+
+    .prose p em {
+      color: var(--ch1-gold-light);
+      font-style: italic;
+    }
+
+    .prose p strong {
+      color: var(--ch1-text);
+      font-weight: 600;
+    }
+
+    /* Dialogue styling */
+    .dialogue {
+      text-indent: 0 !important;
+      padding-left: 1rem;
+      border-left: 2px solid var(--ch1-border-glow);
+      margin: 1.2rem 0;
+      font-style: italic;
+      color: var(--ch1-gold-light);
+    }
+
+    .dialogue .speaker {
+      font-style: normal;
+      font-weight: 600;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ch1-text-muted);
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .dialogue.keiko {
+      border-left-color: var(--ch1-amber);
+      color: var(--ch1-text-soft);
+    }
+
+    .dialogue.chuy {
+      border-left-color: var(--ch1-gold);
+    }
+
+    .dialogue.takeshi {
+      border-left-color: var(--ch1-neon-dim);
+      color: var(--ch1-neon);
+    }
+
+    .dialogue.abuela {
+      border-left-color: #a07850;
+      color: #d4b896;
+    }
+
+    /* Internal monologue */
+    .thought {
+      text-indent: 0 !important;
+      font-style: italic;
+      color: var(--ch1-gold-dim);
+      text-align: center;
+      padding: 0.5rem 2rem;
+      margin: 1.5rem 0;
+    }
+
+    /* Pull quote / emphasis block */
+    .pull-quote {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      margin: 2rem 0;
+      border-top: 1px solid var(--ch1-border);
+      border-bottom: 1px solid var(--ch1-border);
+    }
+
+    .pull-quote p {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--ch1-gold);
+      line-height: 1.7;
+      text-indent: 0;
+      margin-bottom: 0;
+    }
+
+    /* Scene break */
+    .scene-break {
+      text-align: center;
+      padding: 2rem 0;
+      color: var(--ch1-text-ghost);
+      font-size: 0.8rem;
+      letter-spacing: 0.8em;
+    }
+
+    /* Memory flashback styling */
+    .memory {
+      background: rgba(212, 168, 67, 0.03);
+      border-left: 3px solid var(--ch1-gold-dim);
+      border-radius: 0 8px 8px 0;
+      padding: 1.2rem 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .memory p {
+      color: var(--ch1-gold-light);
+      font-size: 0.95rem;
+      text-indent: 0;
+      margin-bottom: 0.8rem;
+    }
+
+    .memory p:last-child {
+      margin-bottom: 0;
+    }
+
+    .memory__label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--ch1-gold-dim);
+      display: block;
+      margin-bottom: 0.6rem;
+    }
+
+    /* ─── Chapter End ───────────────────────────────────────── */
+    .chapter-end {
+      text-align: center;
+      padding: 4rem 1.5rem 3rem;
+      border-top: 1px solid var(--ch1-border);
+    }
+
+    .chapter-end__divider {
+      font-size: 1.2rem;
+      color: var(--ch1-gold-dim);
+      letter-spacing: 0.5em;
+      margin-bottom: 2rem;
+    }
+
+    .chapter-end__line {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--ch1-gold);
+      line-height: 1.8;
+      max-width: 500px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .chapter-end__nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .chapter-end__link {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      padding: 0.6rem 1.5rem;
+      border: 1px solid var(--ch1-border-glow);
+      border-radius: 100px;
+      color: var(--ch1-text-soft);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .chapter-end__link:hover {
+      border-color: var(--ch1-gold);
+      color: var(--ch1-gold);
+      background: rgba(212, 168, 67, 0.05);
+    }
+
+    .chapter-end__link--disabled {
+      opacity: 0.3;
+      pointer-events: none;
+    }
+
+    /* ─── Footer ────────────────────────────────────────────── */
+    .ch-footer {
+      padding: 2rem 1.5rem;
+      text-align: center;
+      border-top: 1px solid var(--ch1-border);
+    }
+
+    .ch-footer__text {
+      font-size: 0.7rem;
+      color: var(--ch1-text-ghost);
+      letter-spacing: 0.08em;
+    }
+
+    .ch-footer__text strong {
+      color: var(--ch1-text-muted);
+      letter-spacing: 0.1em;
+    }
+
+    /* ─── Responsive ────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .prose p {
+        font-size: 0.95rem;
+        text-indent: 1em;
+      }
+
+      .ch-hero__content {
+        padding: 5rem 1rem 2rem;
+      }
+
+      .dialogue {
+        padding-left: 0.8rem;
+      }
+
+      .memory {
+        padding: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .chapter-nav {
+        padding: 0.6rem 1rem;
+      }
+
+      .chapter-nav__indicator {
+        display: none;
+      }
+
+      .pull-quote p {
+        font-size: 1.05rem;
+      }
+    }
+
+    /* ─── Print ─────────────────────────────────────────────── */
+    @media print {
+      .chapter-nav, .ch-hero__scroll { display: none; }
+      body { background: #fff; color: #1a1a1a; }
+      .prose p { color: #1a1a1a; }
+      .dialogue { color: #333; border-left-color: #ccc; }
+      .memory { border-left-color: #ccc; background: #f5f5f5; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!--  NAV BAR                                               -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <nav class="chapter-nav">
+    <a href="index.html" class="chapter-nav__home">← Échale Ganas</a>
+    <span class="chapter-nav__indicator">Act I · Chapter 1</span>
+    <span class="chapter-nav__next">Ch 2 — Coming Soon</span>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!--  CHAPTER HERO                                          -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <header class="ch-hero">
+    <div class="ch-hero__content">
+      <span class="ch-hero__act">Act I · Arrival</span>
+      <div class="ch-hero__number">01</div>
+      <h1 class="ch-hero__title">Sunday Night</h1>
+      <p class="ch-hero__epigraph">
+        "The last time Chuy was just a kid from Mexico<br />was somewhere above the Pacific Ocean."
+      </p>
+      <div class="ch-hero__locations">
+        <span class="loc-tag">✈️ Mexico → Japan</span>
+        <span class="loc-tag">🛬 Narita International Airport</span>
+        <span class="loc-tag">🏙️ Tokyo — City Center Apartment</span>
+      </div>
+    </div>
+    <div class="ch-hero__scroll" aria-hidden="true">
+      <span>begin</span>
+      <div class="ch-hero__scroll-line"></div>
+    </div>
+  </header>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       SCENE 1 — THE PLANE
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="scene" id="scene-1">
+    <div class="scene__header">
+      <div class="scene__location">✈️ Somewhere over the Pacific</div>
+      <div class="scene__time">Sunday, 9:47 PM — Cabin Lights Dimmed</div>
+    </div>
+
+    <div class="prose">
+
+      <p class="no-indent">The seatback screen glowed blue-white in the dark cabin, casting a thin rectangle of light across Chuy's face. On screen, a rich Mexican father was forcing his spoiled children to live without money for the summer, and they were failing spectacularly at it. <em>Nosotros los Nobles.</em> Chuy had seen the movie three times already — twice with his father, once alone — but tonight it felt different. Tonight, he was the one leaving everything behind.</p>
+
+      <p>He adjusted his earbuds and pulled the airline blanket higher. Fourteen hours into the flight, and his body had given up trying to figure out what time zone it belonged to. The cabin hummed with the low vibration of engines and the occasional cough from somewhere in business class. Most of the passengers were asleep. Small reading lights dotted the darkness like fallen stars.</p>
+
+      <p>Beside him, Keiko slept with her head turned toward the window. She'd taken a sleeping pill somewhere over Hawaii and hadn't moved since. Her face was slack, her breathing even, her phone still clutched in her left hand like a weapon she refused to put down even in dreams. Chuy noticed that the screen still showed a half-written email. <em>Always working.</em> He reached over and draped his blanket across her shoulders, careful not to wake her.</p>
+
+      <p>She didn't stir.</p>
+
+      <p>On the screen, Javi — the oldest Noble son — was learning to wash his own clothes for the first time, making a spectacular mess of it while the laundromat patrons watched in disbelief. Chuy smiled. Antonio used to pause the movie at this exact scene and say—</p>
+
+      <div class="memory">
+        <span class="memory__label">Mexico City — Eight Months Ago</span>
+        <p><em>"You see that, mijo? That's what happens when you have everything and know nothing. Never be that guy. Learn to cook, learn to clean, learn to fix things with your hands. Money runs out. Skills don't."</em></p>
+        <p>Antonio had said this from the kitchen, where he was making enchiladas from a recipe his own mother had written on a laminated index card, the handwriting faded but still legible after thirty years. He'd waved the spatula at the TV like a conductor's baton. Chuy, twelve at the time, had laughed so hard that rice came out of his nose.</p>
+      </div>
+
+      <p>That was the last time they watched the movie together. Three weeks later, Antonio had his first hospital visit. Six weeks after that, the visits became permanent. Eight months after that — Chuy was on a plane to Tokyo.</p>
+
+      <p>He blinked. The movie was still playing, but the comedy had gone quiet in his ears. He reached beneath his shirt collar and touched the chain around his neck. Gold. Thin but unbreakable. The Virgen de Guadalupe pendant was warm from his skin, the way it always was — as though it carried its own heartbeat.</p>
+
+      <div class="memory">
+        <span class="memory__label">Hospital de México — The Last Visit</span>
+        <p>Antonio's hands were thin when he unclasped the chain from his own neck. The effort made him wince. Chuy tried to stop him — <em>"Papá, no, it's yours—"</em> — but Antonio shook his head with that stubborn smile, the one that meant the conversation was already over.</p>
+        <p><em>"Cuídamela, mijo."</em> He placed it around Chuy's neck and let his fingers rest there for a moment. <em>"Y ella te cuida a ti."</em></p>
+        <p>Take care of her for me, son. And she'll take care of you.</p>
+      </div>
+
+      <p>Chuy held the pendant now, thirty-seven thousand feet above the Pacific, and felt the same warmth he'd felt in that hospital room. The cabin was dark. The engines hummed. On the screen, the Noble children were learning that the world doesn't care about your last name.</p>
+
+      <p>He looked out the window — Keiko's window, but she was asleep and didn't need it. Nothing but black. Not even clouds. Just the absolute darkness of an ocean at night, stretching in every direction like the future. Somewhere below that darkness, the Pacific was moving without him. Somewhere ahead of it, Japan was waiting.</p>
+
+      <p class="thought">Ya casi, papá.</p>
+
+      <p>He whispered it to no one. Or maybe to the chain. Or maybe to the space between the engine hum where his father's voice used to live.</p>
+
+      <p>A flight attendant paused by his row, noticed the boy was still awake, and offered a small smile. She said something in Japanese that Chuy didn't catch, then switched to English.</p>
+
+      <p class="dialogue chuy"><span class="speaker">Flight Attendant</span>"Can I get you anything? Water? A snack?"</p>
+
+      <p class="dialogue chuy"><span class="speaker">Chuy</span>"No, thank you. I'm okay." A pause. Then, because he couldn't help himself: "Actually — do you know how much longer until we land?"</p>
+
+      <p class="dialogue chuy"><span class="speaker">Flight Attendant</span>"About two hours. You'll see the coast soon."</p>
+
+      <p>Two hours. Two hours until he stopped being a kid from Mexico and started being something else. He wasn't sure what the new thing was yet. <em>Foreigner. Transfer student. The woman's son.</em> None of the labels fit the way <em>Chuy</em> did. The way <em>mijo</em> did.</p>
+
+      <p>He pressed play on the movie again. On screen, the Nobles were sitting together at a plastic table in a modest apartment, eating simple food, laughing — actually laughing — for the first time. They'd lost everything and found each other.</p>
+
+      <p>Chuy looked at Keiko. Still asleep. Still turned away.</p>
+
+      <p class="thought">We're going to be okay, mamá. We're going to be fine.</p>
+
+      <p>He believed it completely. That was the thing about Chuy — he believed things completely, even when the evidence was already whispering otherwise.</p>
+
+    </div>
+  </section>
+
+  <div class="scene-break">· · ·</div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       SCENE 2 — THE AIRPORT
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="scene" id="scene-2">
+    <div class="scene__header">
+      <div class="scene__location">🛬 Narita International Airport — Terminal 1</div>
+      <div class="scene__time">Monday, 5:12 AM Local Time — Gate 42</div>
+    </div>
+
+    <div class="prose">
+
+      <p class="no-indent">Narita hit him like a wall of sensory information. The signs were in three scripts he could only read one of — and even the English versions felt foreign, sterile, precision-engineered in a way that Mexican airport signs never were. The air was different. Cleaner. Colder. It smelled like new carpet and industrial citrus and the future.</p>
+
+      <p>Keiko walked ahead of him. Not fast, but not with him either — she moved through the terminal the way people move through places they've already been, phone pressed to her ear, heels clicking on polished floors. She was speaking Japanese now, rapid and fluent, and Chuy caught maybe one word in ten. She'd lived in Japan before he was born. It was her first home. For Chuy, it was his first foreign country.</p>
+
+      <p>He carried his own suitcase — a red one, scuffed at the corners, with a Mexican flag sticker peeling off the side. Inside, beneath the school uniforms and toiletries Keiko had packed with mechanical precision, there was a plastic bag of Pulparindos. Antonio had packed them months ago, before the hospital visits got longer, before the mornings got quieter. He'd tucked them between Chuy's shirts like contraband.</p>
+
+      <div class="memory">
+        <span class="memory__label">Antonio's Kitchen — The Week Before</span>
+        <p><em>"Para que no te sientas solo, mijo."</em></p>
+        <p>So you don't feel alone, son.</p>
+        <p>He'd said it while zipping the suitcase shut, and then turned back to the stove like it was nothing. Like hiding candy in your son's luggage was just another Tuesday. Like the world wasn't ending.</p>
+      </div>
+
+      <p>Chuy's eyes stung. He blinked it away and kept walking.</p>
+
+      <p>Keiko was twenty meters ahead now, navigating customs with the efficiency of a woman who traveled internationally the way most people took the bus. Chuy caught up at the immigration line, passport in hand, trying to remember the three Japanese phrases he'd practiced on the plane: <em>Konnichiwa. Arigatou gozaimasu. Sumimasen.</em> Hello. Thank you. Excuse me. His entire survival vocabulary.</p>
+
+      <p>They cleared customs separately — Keiko with a Japanese passport, Chuy with a Mexican one that earned him a long, careful look from the immigration officer. He smiled at the officer the way he smiled at everyone: wide, genuine, completely disarming. The officer stamped his passport without comment.</p>
+
+      <p>It was while Keiko was in the restroom that Chuy heard the crying.</p>
+
+      <p>A small boy — four, maybe five — sat on a metal bench near Gate 37, hugging a stuffed dinosaur and sobbing with the full-body commitment that only small children can manage. His face was red and wet. His sneakers didn't reach the floor. No parents in sight.</p>
+
+      <p>Chuy looked around. Businessmen walked past without breaking stride. A woman with a rolling bag glanced over, hesitated, and kept moving. The airport announcements continued in three languages, none of them the language the boy needed, which was the simple language of someone sitting down beside him.</p>
+
+      <p>So Chuy sat down beside him.</p>
+
+      <p class="dialogue chuy"><span class="speaker">Chuy</span>"Hey. Hey, little man. It's okay."</p>
+
+      <p>The boy looked up. Tears and snot and confusion. He said something in Japanese — fast, panicked, the words tumbling over each other like spilled marbles. Chuy didn't understand a single word, but he understood the feeling perfectly: <em>I'm lost and I'm scared and nobody is helping me.</em></p>
+
+      <p class="dialogue chuy"><span class="speaker">Chuy</span>"I don't speak Japanese very well. <em>Sumimasen.</em> But—" He pointed at the stuffed dinosaur. "Cool dinosaur. <em>Muy cool.</em>"</p>
+
+      <p>The boy blinked. Stared at the dinosaur. Looked back at Chuy.</p>
+
+      <p class="dialogue chuy"><span class="speaker">Boy</span>"... T-Rex."</p>
+
+      <p class="dialogue chuy"><span class="speaker">Chuy</span>"T-Rex! Yeah! <em>El rey de los dinosaurios.</em>"</p>
+
+      <p>He made a terrible T-Rex impression — arms tucked in, jaw snapping — and the boy's crying paused just long enough for a hiccup that was almost a laugh. Chuy pressed his advantage. He reached into his jacket pocket and pulled out a Pulparindo — the emergency one he always carried, the way his father had taught him.</p>
+
+      <p class="dialogue chuy"><span class="speaker">Chuy</span>"Here. It's from Mexico. It's sweet. And spicy. And a little weird." He unwrapped it slowly. "Like me."</p>
+
+      <p>The boy took it. Licked it. His entire face contorted — the tamarind-chili flavor hit like a small, delicious explosion — and then, incredibly, he smiled. A real one. The kind that rearranges a whole face.</p>
+
+      <p>Chuy pulled out his phone, opened the translator app, and typed carefully: <em>Where are your parents?</em> He showed the screen to the boy. The boy pointed toward the main corridor, past the duty-free shops. Chuy took his hand — small, sticky from the Pulparindo — and they walked together.</p>
+
+      <p>They found the parents in under three minutes. The mother was near tears herself, talking rapidly to an airport security guard. When she saw the boy, she dropped to her knees and pulled him into an embrace that could have stopped time. The father appeared seconds later, face flooded with relief.</p>
+
+      <p>The father turned to Chuy and bowed — deep, formal, the kind of bow Chuy had only seen in movies. Then he reached into his wallet and held out a ten-thousand-yen note.</p>
+
+      <p class="dialogue chuy"><span class="speaker">Father</span>(In English) "Please. Thank you. Please take this."</p>
+
+      <p>Chuy looked at the money. He looked at the boy, who was now showing his mother the half-eaten Pulparindo with visible pride. He looked at the father.</p>
+
+      <p class="dialogue chuy"><span class="speaker">Chuy</span>"No, no. I just— I only wanted to help."</p>
+
+      <p>He smiled. The father stared at him — at this tall, dark-skinned teenager with a gold chain and a red suitcase and a warmth so genuine it almost didn't make sense in an airport at five in the morning — and bowed again.</p>
+
+      <p>Chuy bowed back. Badly. The angle was wrong, and he almost dropped his suitcase. But the intention was unmistakable.</p>
+
+      <p>He turned around to find Keiko standing ten feet away, phone at her side, watching. Not angry. Not impressed. Just… there. Like a portrait hung slightly crooked that nobody bothers to fix.</p>
+
+      <p class="dialogue chuy"><span class="speaker">Chuy</span>"Mamá! There was this little boy, and he was lost, and I helped him find his parents, and I gave him a Pulparindo and he made the funniest face—"</p>
+
+      <p class="dialogue keiko"><span class="speaker">Keiko</span>"Mmm."</p>
+
+      <p>She was looking at her phone again. Already walking.</p>
+
+      <p class="dialogue keiko"><span class="speaker">Keiko</span>"Takeshi is waiting outside. Let's go."</p>
+
+      <p>Chuy watched her walk away. The excitement in his chest dimmed — not extinguished, just… lowered, like a flame adjusting to less oxygen. He gripped the handle of his suitcase, touched the chain under his shirt, and followed.</p>
+
+      <p>Behind him, the boy waved the Pulparindo in the air. Chuy didn't see it. But the boy's mother did, and she wondered, briefly, who raises a child like that — one who gives instead of takes in a world that teaches the opposite.</p>
+
+      <p>The answer was standing on a shelf in a Mexico City apartment. In a photograph. Smiling.</p>
+
+    </div>
+  </section>
+
+  <div class="scene-break">· · ·</div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       SCENE 3 — THE DRIVE
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="scene" id="scene-3">
+    <div class="scene__header">
+      <div class="scene__location">🚗 Tokyo — Metropolitan Expressway</div>
+      <div class="scene__time">Monday, 6:30 AM — First Light</div>
+    </div>
+
+    <div class="prose">
+
+      <p class="no-indent">Takeshi was waiting outside Arrivals with a sign that read <strong>HERNÁNDEZ TORRES</strong> in clean block letters. He was in his fifties, maybe sixties — a compact man with close-cropped silver hair, a pressed black suit, and a face that had clearly spent decades perfecting the art of professional neutrality. He bowed to Keiko. He bowed to Chuy. He took both suitcases with the kind of quiet competence that made the effort invisible.</p>
+
+      <p>The car was a limousine. An actual, honest-to-God, black-leather, tinted-window limousine. Chuy stopped walking.</p>
+
+      <p class="dialogue chuy"><span class="speaker">Chuy</span>"That's— wait. That's for us?"</p>
+
+      <p class="dialogue keiko"><span class="speaker">Keiko</span>(Already at the door) "Get in, Jesús."</p>
+
+      <p><em>Jesús.</em> Not <em>Chuy.</em> Not <em>mijo.</em> His full legal name, delivered in the same tone she used for work calls. He filed it away in the part of his mind that wasn't ready to examine it yet and climbed in.</p>
+
+      <p>The interior was cool, dark, and smelled like leather and something floral he couldn't identify. Chuy instinctively moved toward the front passenger seat — he wanted to sit near Takeshi, ask him questions, look at the road — but the partition between front and back was already closing. This was not a car designed for conversation between driver and passenger. This was a car designed for people who needed to work during the ride. And Keiko was already working.</p>
+
+      <p>She had her laptop open before Takeshi pulled out of the airport. The blue screen lit her face in a way that made her look like a stranger — composed, focused, unreachable. She was speaking on the phone again. Japanese. Business Japanese. The kind with the formal suffixes and the carefully modulated pitch that sounded nothing like the warm, half-laughing Spanish she used to speak at Antonio's dinner table.</p>
+
+      <p class="thought">Used to.</p>
+
+      <p>Chuy pressed his face against the window.</p>
+
+      <p>Tokyo at dawn was unlike anything he'd ever seen. The highway curved through a landscape of concrete and glass, structures so tall and clean they looked computer-generated. Neon signs — some still lit from the night before — flickered in colors he didn't have words for in any language. The early morning light was different here. In Mexico City, sunrise was orange and warm and a little dusty, like the city was waking up slowly, stretching, making coffee. In Tokyo, sunrise was silver and precise, like someone had calibrated it.</p>
+
+      <p>A bridge over a river. A train sliding through the cityscape like a silver needle threading fabric. Convenience stores on every corner, their logos glowing like small lighthouses. Trees — actual trees — planted in perfect rows along the highway median, each one identical, each one exactly the distance apart from the next.</p>
+
+      <p class="dialogue chuy"><span class="speaker">Chuy</span>(Whispering, to himself) "<em>Está bien chido esto...</em>"</p>
+
+      <p>Takeshi's eyes appeared in the rearview mirror. Just for a second. Then he spoke — and it was the first warm voice Chuy had heard since landing.</p>
+
+      <p class="dialogue takeshi"><span class="speaker">Takeshi</span>"First time in Tokyo?"</p>
+
+      <p>Chuy sat up. The partition had a small intercom, and Takeshi had turned it on.</p>
+
+      <p class="dialogue chuy"><span class="speaker">Chuy</span>"<em>Sí!</em> I mean — yes! First time in Japan. First time anywhere that isn't Mexico." He paused. "It's really… organized."</p>
+
+      <p>Takeshi made a sound that might have been a laugh. A careful, professional, barely-audible laugh.</p>
+
+      <p class="dialogue takeshi"><span class="speaker">Takeshi</span>"You'll get used to it. It takes a few weeks. The quiet is the hardest part."</p>
+
+      <p class="dialogue chuy"><span class="speaker">Chuy</span>"The quiet?"</p>
+
+      <p class="dialogue takeshi"><span class="speaker">Takeshi</span>"People don't talk as much here. Not to strangers. Not on trains. Not in hallways." A pause. "You seem like a boy who talks to strangers."</p>
+
+      <p>Chuy grinned. It was the first real grin since the plane, and it lit up the back of the limousine like a small, personal sunrise.</p>
+
+      <p class="dialogue chuy"><span class="speaker">Chuy</span>"Is that bad?"</p>
+
+      <p class="dialogue takeshi"><span class="speaker">Takeshi</span>"No." The eyes in the mirror again. Something that was almost, almost a smile. "You'll like it here. Eventually."</p>
+
+      <p>Keiko didn't look up from her laptop. She hadn't heard any of it.</p>
+
+      <p>Chuy watched the city scroll past — a thousand windows reflecting a thousand versions of the same dawn — and felt something shift in his chest. Not quite excitement. Not quite fear. Something in between. The feeling of standing at the edge of a pool you've never swum in, knowing the water is cold, knowing you're going to jump anyway.</p>
+
+      <p class="thought">Échale ganas, mijo.</p>
+
+      <p>The voice came from nowhere. From everywhere. From a chain around his neck.</p>
+
+    </div>
+  </section>
+
+  <div class="scene-break">· · ·</div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       SCENE 4 — THE APARTMENT
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="scene" id="scene-4">
+    <div class="scene__header">
+      <div class="scene__location">🏙️ Tokyo — Minato District, 22nd Floor</div>
+      <div class="scene__time">Monday, 7:15 AM — Apartment 2204</div>
+    </div>
+
+    <div class="prose">
+
+      <p class="no-indent">The building had a doorman, a marble lobby, and an elevator that moved so smoothly Chuy wasn't sure they were going up until his ears popped. Twenty-second floor. The hallway smelled like nothing — not food, not people, not life. Just expensive neutrality.</p>
+
+      <p>Keiko opened the door with a keycard. The apartment unfolded before them: floor-to-ceiling windows looking out over the Tokyo skyline, hardwood floors so polished they reflected the ceiling lights, a living room larger than the entire ground floor of their house in Mexico City. Modern furniture. Clean lines. Everything in shades of white and gray, like living inside a magazine that no one had read yet.</p>
+
+      <p>Chuy stood in the doorway. His red suitcase looked absurd against the white marble of the entryway — a splash of color in a monochrome world.</p>
+
+      <p class="dialogue chuy"><span class="speaker">Chuy</span>"This is… <em>hijole.</em>"</p>
+
+      <p>He walked through the rooms like a tourist in a museum. The living room had a sofa that could seat eight people. There was a dining table made of something that looked like it cost more than a car. The kitchen — <em>the kitchen</em> — was enormous. Professional-grade stove, an island with a butcher-block top, copper pots hanging from a ceiling rack. It was the kitchen Antonio would have wept over. Every tool he ever needed. Every surface he ever dreamed of.</p>
+
+      <p>It had never been cooked in.</p>
+
+      <p>Chuy ran his hand over the cold stove. He opened a cabinet — empty. Another — empty. The refrigerator held a single bottle of water and a box of something written in kanji he couldn't read. The kitchen was a shrine to potential, unused and gathering silence.</p>
+
+      <p class="thought">Papá would have had this thing singing by now.</p>
+
+      <p>Keiko had already disappeared into the master bedroom. Chuy heard the door close. Not a slam — just a click. The universal sound of someone choosing to be alone.</p>
+
+      <p>He found his room at the end of the hall. Smaller than the master but still larger than his room in Mexico City. A bed with white sheets. A desk. A window that looked east, toward a part of Tokyo he didn't have a name for yet. The walls were empty.</p>
+
+      <p>He unzipped the red suitcase. School uniforms on top, folded with Keiko's architectural precision. Beneath them, his own clothes — jeans, hoodies, the River Plate jersey his cousin Memo had given him as a going-away gift. Toiletries. A notebook. His phone charger.</p>
+
+      <p>And there, at the very bottom, tucked inside a plastic bag between his socks and a Spanish-Japanese dictionary he'd bought at the airport — a laminated index card.</p>
+
+      <p>He held it up. The handwriting was unmistakable. Angular, confident, slightly too large for the card — the handwriting of a man who cooked the way he lived, with gestures that filled every available space.</p>
+
+      <div class="pull-quote">
+        <p>Enchiladas de Mamá Lupe<br />
+        — Antonio Hernández, para mi hijo —<br />
+        "Para que siempre tengas un pedacito de casa."</p>
+      </div>
+
+      <p>So you always have a little piece of home.</p>
+
+      <p>Chuy pressed the card to his chest. He didn't cry. He was very close — the pressure was there, behind his eyes, in the back of his throat — but he didn't. Not because he was tough. Because crying felt like admitting something he wasn't ready to admit. That he was alone. That his father was gone. That his mother was here but wasn't really <em>here</em>.</p>
+
+      <p>Instead, he propped the recipe card against the desk lamp, where he'd see it every morning. Then he opened his backpack and carefully removed a framed photograph: Antonio in the kitchen, mid-laugh, flour on his face, holding a wooden spoon like a scepter. The photo was from Chuy's eleventh birthday — the day Antonio made a cake so lopsided it looked like the Leaning Tower of Pisa, and they'd eaten the whole thing anyway, sitting on the kitchen floor because the table was too covered in ingredients to use.</p>
+
+      <p>He placed the photo on the shelf above his desk. Adjusted it twice. Touched the chain.</p>
+
+      <p class="dialogue chuy"><span class="speaker">Chuy</span>(Quiet, to the photograph) "Ya llegamos, papá. It's really far. But we're here."</p>
+
+      <p>The photograph smiled back. Antonio always smiled. Even in photographs, even in memory, even in grief — the man's default setting was joy. Chuy had inherited that from him. The jury was still out on whether it was a gift or a curse.</p>
+
+    </div>
+  </section>
+
+  <div class="scene-break">· · ·</div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       SCENE 5 — THE NIGHT
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="scene" id="scene-5">
+    <div class="scene__header">
+      <div class="scene__location">🏙️ Apartment 2204 — Kitchen</div>
+      <div class="scene__time">Monday, 10:48 PM — First Night</div>
+    </div>
+
+    <div class="prose">
+
+      <p class="no-indent">He'd spent the day unpacking, exploring the apartment, and trying to connect to the Wi-Fi (the password was a twenty-character string of random letters that Keiko had texted him without commentary). The city outside the window had transformed — the silver precision of dawn had given way to the electric sprawl of night. Tokyo at night was alive in a way that was entirely different from Mexico City. In Mexico, nighttime was warm, musical, chaotic — mariachis down the street, neighbors calling out from balconies, the distant rumble of traffic mixed with cumbia from a corner store. In Tokyo, the night was bright but hushed. The neon spoke in silence. The trains ran on schedules. Even the darkness felt organized.</p>
+
+      <p>Chuy made himself a sandwich. It was the only thing he could manage — the kitchen was bare, and the convenience store downstairs had required a ten-minute exercise in pointing at things and saying <em>"kore, please"</em> until the cashier took pity on him and helped him pick out bread, ham, and something that turned out to be mayonnaise with a slightly sweet flavor he didn't expect but didn't hate.</p>
+
+      <p>He ate at the dining table that seated eight. Population: one.</p>
+
+      <p>His phone buzzed. He picked it up.</p>
+
+      <p class="dialogue abuela"><span class="speaker">Abuela Lupe (WhatsApp)</span>"¿Ya llegaron, mijo? ¿Cómo está todo? Mándame fotos del departamento. ¿Ya comiste? 🇲🇽❤️"</p>
+
+      <p>Chuy smiled. He could hear her voice through the text — fast, concerned, the kind of voice that turned every question into an act of love. He took a photo of the view from the kitchen window — the Tokyo skyline, glittering and vast — and sent it back.</p>
+
+      <p class="dialogue chuy"><span class="speaker">Chuy</span>"Ya llegamos, abuelita. Japón es… grande. 🗼"</p>
+
+      <p class="dialogue abuela"><span class="speaker">Abuela Lupe</span>"¿Y tu mamá? 💛"</p>
+
+      <p>Chuy looked at Keiko's closed bedroom door. He could hear nothing from the other side. No TV. No music. No conversation. Just the particular silence of a person who has decided that the world on the other side of the door can wait until morning.</p>
+
+      <p class="dialogue chuy"><span class="speaker">Chuy</span>"Está bien. Cansada del viaje. 😊"</p>
+
+      <p><em>She's fine. Tired from the trip.</em></p>
+
+      <p>The first lie of his new life. It came easily — too easily. Not because Chuy was a liar, but because the truth was a shape he didn't have words for yet. How do you tell your grandmother that your mother is here but not present? That she breathes the same air but inhabits a different atmosphere? That the woman who used to sing <em>Cielito Lindo</em> while making breakfast now eats silence for dinner?</p>
+
+      <p>You don't. You type <em>"está bien"</em> and add a smiling emoji and move on.</p>
+
+      <p class="dialogue abuela"><span class="speaker">Abuela Lupe</span>"Cuídate mucho, mi niño. Y cuida a tu mamá. Échale ganas. 🙏"</p>
+
+      <p><em>Échale ganas.</em> Give it your all. The Hernández family motto, passed down through generations like a recipe, like a chain, like a way of surviving the world by refusing to stop trying.</p>
+
+      <p class="dialogue chuy"><span class="speaker">Chuy</span>"Siempre, abuelita. ❤️"</p>
+
+      <p>He put the phone down. Washed his plate. Wiped the counter, even though it was already clean. Tidied his room, even though there was nothing to tidy. The rituals of a boy who doesn't know what to do with stillness.</p>
+
+      <p>At eleven, Keiko's door opened. Chuy straightened, hopeful.</p>
+
+      <p>She walked to the kitchen in a silk robe. Opened a cabinet — the only one that wasn't empty, Chuy realized now. Inside: a bottle of sake. She poured a glass with the practiced efficiency of someone who had done this many times. Her eyes found Chuy. For a moment — just a moment — something flickered there. Recognition. Tenderness. The ghost of a woman who used to tuck him in and call him <em>mi amor</em>.</p>
+
+      <p class="dialogue chuy"><span class="speaker">Chuy</span>"Buenas noches, mamá."</p>
+
+      <p>A beat. The longest beat of the chapter.</p>
+
+      <p class="dialogue keiko"><span class="speaker">Keiko</span>"Buenas noches, Jesús."</p>
+
+      <p><em>Jesús.</em> Full name. Formal distance. Not <em>Chuy.</em> Not <em>mijo.</em> The word sat between them like a wall built out of syllables. She took the sake and went back to her room. The door clicked shut.</p>
+
+      <p>Chuy stood in the kitchen for a long time. The refrigerator hummed. The Tokyo skyline pulsed outside the window. Somewhere in the building, someone was playing piano — soft, classical, the notes drifting through the walls like smoke.</p>
+
+      <p>He went to his room. Changed into a T-shirt and shorts. Brushed his teeth in a bathroom with a mirror that lit up automatically (he jumped the first time). Climbed into bed. White sheets. Firm mattress. A pillow that smelled like nothing.</p>
+
+      <p>He reached for the chain. Held the pendant. The Virgen's face was smooth under his thumb, worn by years of Antonio's touch and now by his own.</p>
+
+      <p>Through the window, Tokyo hummed its electric lullaby — a different kind of alive, a frequency he hadn't learned to tune into yet. In Mexico City, you fell asleep to dogs barking, distant music, the murmur of a city that never quite committed to silence. Here, the quiet was deliberate. The city was awake, but it kept its voice down.</p>
+
+      <p class="dialogue chuy"><span class="speaker">Chuy</span>(Whispering, to the chain) "Échale ganas, mijo."</p>
+
+      <p>He said it to hear it. To keep the voice alive. To prove that even in a city of fourteen million people who didn't know his name, the most important voice could still reach him if he said the words himself.</p>
+
+      <p>He closed his eyes. Tomorrow, he would walk into a school called Seirei Private Academy. He would carry Pulparindos in a plastic bag. He would wear a chain that the rules didn't allow. He would smile at people who didn't smile back. He would say <em>"good morning"</em> in a hallway that had never heard it.</p>
+
+      <p>He didn't know any of that yet. Right now, he was just a boy in an unfamiliar bed, holding his father's chain, listening to a city learn his name.</p>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       CHAPTER CLOSE
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="chapter-end">
+    <div class="chapter-end__divider">✦ ✦ ✦</div>
+    <p class="chapter-end__line">
+      He sleeps with the chain around his neck and his father's voice in his ears.<br />
+      He doesn't know yet that this will be the easiest night he'll have in Japan.
+    </p>
+    <div class="chapter-end__nav">
+      <a href="index.html" class="chapter-end__link">← Back to Hub</a>
+      <span class="chapter-end__link chapter-end__link--disabled">Chapter 2 — Coming Soon →</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════════════════════ -->
+  <footer class="ch-footer">
+    <div class="ch-footer__text">
+      <strong>ÉCHALE GANAS</strong> — The Ice Princess and the Candy Boy<br />
+      Season 1 · Act I · Chapter 1: Sunday Night
+    </div>
+  </footer>
+
+</body>
+</html>
