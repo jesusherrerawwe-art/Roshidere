@@ -2,7 +2,7 @@
 ## *The Ice Princess and the Candy Boy*
 ### A Roshidere Story · Season 1
 
-A 14-chapter, 4-act story following **Jesús "Chuy" Hernández Torres** as he arrives at Seirei Private Academy carrying nothing but Pulparindos, a Virgen de Guadalupe chain, and a smile that doesn't know it's about to be tested.
+A 14-chapter, 4-act story following **Jesús Antonio "Chuy" Gutiérrez Fujioka** as he arrives at Seirei Private Academy carrying nothing but Pulparindos, a Virgen de Guadalupe chain, and a smile that doesn't know it's about to be tested.
 
 🇲🇽 🇷🇺 🇯🇵
 
