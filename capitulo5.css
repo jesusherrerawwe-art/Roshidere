@@ -1,0 +1,215 @@
+:root {
+  --bg-top: #14263f;
+  --bg-bottom: #0a111e;
+  --paper: #fbf4e7;
+  --ink: #2b2418;
+  --panel: rgba(13, 23, 40, 0.88);
+  --panel-line: rgba(255, 233, 190, 0.25);
+  --accent: #e3a85f;
+  --accent-2: #8fd4ff;
+  --line: #ddc8a4;
+  --muted: #d6deef;
+  --shadow: 0 24px 52px rgba(0, 0, 0, 0.5);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: "Source Serif 4", Georgia, serif;
+  background:
+    radial-gradient(1200px 750px at 6% -12%, rgba(143, 212, 255, 0.16), transparent 65%),
+    radial-gradient(1200px 750px at 94% -10%, rgba(227, 168, 95, 0.15), transparent 65%),
+    linear-gradient(180deg, var(--bg-top), var(--bg-bottom));
+}
+
+.post-header {
+  width: min(1160px, 95vw);
+  margin: 1.4rem auto 1rem;
+  border: 1px solid var(--panel-line);
+  border-radius: 1rem;
+  background: var(--panel);
+  color: #edf5ff;
+  box-shadow: var(--shadow);
+  padding: clamp(1rem, 2.5vw, 1.9rem);
+  position: relative;
+}
+
+.stamp {
+  display: inline-block;
+  margin-bottom: 0.65rem;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px dashed rgba(227, 168, 95, 0.8);
+  border-radius: 0.45rem;
+  padding: 0.18rem 0.5rem;
+  color: #ffd7a4;
+  background: rgba(227, 168, 95, 0.12);
+}
+
+.post-header h1 {
+  margin: 0.35rem 0 0.45rem;
+  font-family: Cinzel, "Times New Roman", serif;
+  font-size: clamp(1.7rem, 4vw, 2.9rem);
+  line-height: 1.2;
+}
+
+.post-header p {
+  margin: 0;
+  max-width: 84ch;
+}
+
+.post-header nav {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.post-header nav a {
+  text-decoration: none;
+  color: #e9f8ff;
+  font-family: Inter, Arial, sans-serif;
+  border: 1px solid rgba(143, 212, 255, 0.45);
+  border-radius: 999px;
+  background: rgba(143, 212, 255, 0.13);
+  padding: 0.28rem 0.78rem;
+}
+
+.post-header nav a:hover,
+.post-header nav a:focus-visible {
+  border-color: rgba(227, 168, 95, 0.8);
+  background: rgba(227, 168, 95, 0.2);
+}
+
+.mail-layout {
+  width: min(1160px, 95vw);
+  margin: 0 auto 2rem;
+  display: grid;
+  grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.mail-sidebar {
+  position: sticky;
+  top: 1rem;
+  border: 1px solid var(--panel-line);
+  border-radius: 0.85rem;
+  background: rgba(12, 22, 39, 0.92);
+  color: #ebf4ff;
+  box-shadow: var(--shadow);
+  padding: 1rem;
+}
+
+.mail-sidebar h2 {
+  margin: 0 0 0.6rem;
+  font-family: Cinzel, "Times New Roman", serif;
+  color: #ffe3bc;
+  font-size: 1.1rem;
+}
+
+.mail-sidebar ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.mail-sidebar li {
+  font-size: 0.93rem;
+  line-height: 1.45;
+}
+
+.seal {
+  margin: 0.9rem 0 0;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 0.9rem;
+  color: #dce9ff;
+}
+
+.chapter {
+  background: var(--paper);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.9rem;
+  box-shadow: var(--shadow);
+  padding: clamp(1rem, 2.25vw, 2rem);
+  position: relative;
+}
+
+.chapter::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: 0.9rem;
+  background:
+    linear-gradient(transparent 96%, rgba(177, 141, 93, 0.15) 96%),
+    linear-gradient(90deg, rgba(177, 141, 93, 0.1), transparent 8%);
+  background-size: 100% 2.1rem, 100% 100%;
+  opacity: 0.22;
+}
+
+.chapter > * {
+  position: relative;
+  z-index: 1;
+}
+
+.chapter h2 {
+  margin: 1.5rem 0 0.65rem;
+  font-family: Cinzel, "Times New Roman", serif;
+  color: #4f3514;
+  font-size: clamp(1.05rem, 2.55vw, 1.56rem);
+  line-height: 1.3;
+}
+
+.chapter p,
+.chapter li {
+  font-size: clamp(1rem, 1.5vw, 1.12rem);
+  line-height: 1.8;
+}
+
+blockquote {
+  margin: 1rem 0;
+  border-left: 4px solid #4ca9c6;
+  background: rgba(76, 169, 198, 0.1);
+  padding: 0.84rem 1rem;
+}
+
+.handwritten {
+  font-family: Caveat, cursive;
+  font-size: clamp(1.35rem, 2.5vw, 1.9rem);
+  line-height: 1.35;
+  color: #4a3011;
+  border-left: 4px solid #ba8749;
+  padding-left: 0.8rem;
+}
+
+.chapter-end {
+  margin-top: 2rem;
+  border-top: 1px solid var(--line);
+  padding-top: 1rem;
+  background: linear-gradient(to bottom, rgba(227, 168, 95, 0.18), rgba(227, 168, 95, 0));
+}
+
+@media (max-width: 980px) {
+  .mail-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .mail-sidebar {
+    position: static;
+  }
+}
+
+@media (max-width: 560px) {
+  .post-header,
+  .mail-sidebar,
+  .chapter {
+    padding: 0.95rem;
+  }
+}
