@@ -6,7 +6,7 @@
 
   const DEFAULTS = {
     dad: "The MVP",
-    waifu: "Starlight",
+    waifu: "Karen Tendō",
   };
 
   const dadInput = document.getElementById("dadName");

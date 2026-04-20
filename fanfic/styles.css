@@ -86,7 +86,35 @@ body {
 .tagline {
   margin: 0;
   color: var(--muted);
-  max-width: 62ch;
+  max-width: 70ch;
+}
+
+.notice {
+  margin-top: 18px;
+  padding: 16px 16px 14px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(255, 210, 124, 0.28);
+  background: rgba(30, 22, 10, 0.45);
+}
+
+.notice h2 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+  color: var(--warn);
+}
+
+.notice ul {
+  margin: 0;
+  padding-left: 1.15rem;
+  color: var(--muted);
+}
+
+.notice li {
+  margin: 8px 0;
+}
+
+.notice strong {
+  color: rgba(232, 241, 255, 0.92);
 }
 
 .badge {
@@ -214,6 +242,46 @@ input:focus {
   color: var(--text);
   border-color: rgba(124, 247, 255, 0.22);
   background: rgba(124, 247, 255, 0.06);
+}
+
+.toc.episodes {
+  gap: 8px;
+}
+
+.toc.episodes a.is-current {
+  color: var(--text);
+  border-color: rgba(255, 124, 242, 0.35);
+  background: rgba(255, 124, 242, 0.1);
+}
+
+.coldopen {
+  font-size: 1.05rem;
+  color: rgba(232, 241, 255, 0.95);
+}
+
+.scene {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  margin: 22px 0;
+}
+
+.stinger {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(124, 247, 255, 0.22);
+  background: rgba(6, 10, 20, 0.55);
+  color: rgba(232, 241, 255, 0.92);
+}
+
+.episode.stub {
+  opacity: 0.92;
+}
+
+.stub-msg {
+  margin: 0;
+  color: var(--muted);
+  font-style: italic;
 }
 
 .story {
